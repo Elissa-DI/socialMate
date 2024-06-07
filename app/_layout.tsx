@@ -5,7 +5,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { useEffect } from 'react';
 import 'react-native-reanimated';
-
+import { ToastProvider } from 'react-native-toast-notifications'
 // import { useColorScheme } from '@/components/useColorScheme';
 
 export {
@@ -46,11 +46,19 @@ function RootLayoutNav() {
 
   return (
     // <ThemeProvider value={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
+    <ToastProvider
+      placement="top"
+      animationType='slide-in'
+      successColor="green"
+      dangerColor="red"
+    >
+
       <Stack>
         <Stack.Screen name="(intro)" options={{ headerShown: false }} />
         <Stack.Screen name="(auth)" options={{ headerShown: false }} />
         <Stack.Screen name="home" options={{ headerShown: false }} />
       </Stack>
+    </ToastProvider>
     // </ThemeProvider>
   );
 }
